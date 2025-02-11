@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@layer components {
+    #add-obj {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #2c5364;
+        width: 100%;
+        width: 100%;
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* visibility: hidden; */
+      }
+      
+      #add-obj-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      #add-obj-form input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        pointer-events: auto;
+      }
+      
+      #add-obj-form input[type="text"]:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+      
+      #add-obj-form input[type="submit"] {
+        pointer-events: auto;
+        background: #007bff;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      
+      #add-obj-form input[type="submit"]:hover {
+        background: #0056b3;
+      }
+}

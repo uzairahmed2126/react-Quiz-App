@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@layer components {
+  #main-container {
+    @apply h-screen w-screen flex justify-center align-middle text-center flex-col;
+  }
+  .landing-btn {
+    @apply px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md 
+    hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer w-60 h-20
+    /* height: 50px; */;
+  }
+  #inner-container {
+    @apply flex text-center justify-center gap-10;
+  }
+}
+@media screen and (max-width: 720px) {
+  @layer components {
+    .landing-btn {
+      @apply px-2 py-1 bg-blue-600 text-white font-semibold rounded-lg shadow-md shadow-blue-700
+          hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer w-60 h-15;
+    }
+    #inner-container {
+      @apply flex flex-col text-center justify-center gap-10;
+    }
+    /* #main-container {
+      @apply h-screen w-screen flex justify-center align-middle text-center flex-col;
+    } */
+  }
+}
