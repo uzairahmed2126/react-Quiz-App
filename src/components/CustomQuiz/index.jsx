@@ -1,5 +1,4 @@
 import "../CustomQuiz/style.css";
-import useQuizData from "../../hooks/useQuizData";
 function CustomQuiz() {
   return (
     <div id="add-obj" className="object">

@@ -1,3 +1,4 @@
 import LandingPage from "./LandingPage";
 import CustomQuiz from "./CustomQuiz";
-export { LandingPage, CustomQuiz };
+import QuizPage from "./QuizPage";
+export { LandingPage, CustomQuiz, QuizPage };

@@ -1,10 +1,11 @@
 import "./App.css";
-import { CustomQuiz, LandingPage } from "./components/index";
+import { CustomQuiz, LandingPage, QuizPage } from "./components/index";
 function App() {
   return (
     <>
       {/* <LandingPage /> */}
-      <CustomQuiz />
+      {/* <CustomQuiz /> */}
+      <QuizPage />
     </>
   );
 }
