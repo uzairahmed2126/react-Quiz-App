@@ -5,14 +5,15 @@ function QuizPage() {
   const [index, setIndex] = useState(0);
   const { quizData, error } = useQuizData(5);
   if (error) return <p>Error: {error}</p>;
-
   let arr = ["a", "b", "c", "d"];
+  let score = 0;
+  const opt = document.querySelectorAll(".option");
   if (quizData.length === 0)
     return <p className="text-center m-20 text-6xl">Loading...</p>;
-  function handleQuestionOpt() {
-    setIndex((prev) => {
-      prev + 1;
-    });
+  function handleQuestionOpt(event) {
+    console.log(event);
+    console.log(opt[0 + index]);
+    setIndex(index + 1);
   }
   return (
     <div className="quiz-container">
@@ -25,10 +26,9 @@ function QuizPage() {
         </div>
         <p className="question">{quizData[index].question}</p>
         <div id="questions">
-          {arr.map((item, index) => {
-            console.log(quizData[index]);
+          {arr.map((item, ind) => {
             return (
-              <div key={index} className="  question-container">
+              <div key={ind} className="  question-container">
                 <div className="inner-question-container">
                   <p className="option">{item}</p>
                   <p className="question-p" onClick={handleQuestionOpt}>
