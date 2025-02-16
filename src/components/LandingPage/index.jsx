@@ -1,5 +1,5 @@
-import React from "react";
 import "../LandingPage/style.css";
+import { Link } from "react-router";
 function LandingPage() {
   return (
     <div>
@@ -9,18 +9,26 @@ function LandingPage() {
         </h1>
         <div id="inner-container">
           <div id="create-container">
-            <button
-              id="create"
-              title="Add Your own quiz"
-              className="landing-btn"
-            >
-              Add
-            </button>
+            <Link to="add-quiz">
+              <button
+                id="create"
+                title="Add Your own quiz"
+                className="landing-btn pointer-events-auto"
+              >
+                Add
+              </button>
+            </Link>
           </div>
           <div id="take-container">
-            <button id="take-quiz" className="landing-btn" title="Play Quiz">
-              Take A Quiz
-            </button>
+            <Link to="quiz-game">
+              <button
+                id="take-quiz"
+                className="landing-btn pointer-events-auto"
+                title="Play Quiz"
+              >
+                Take A Quiz
+              </button>
+            </Link>
           </div>
         </div>
       </div>
