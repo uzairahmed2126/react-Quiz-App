@@ -1,7 +1,14 @@
 import "../CustomQuiz/style.css";
+import { Link } from "react-router";
 function CustomQuiz() {
   return (
     <div id="add-obj" className="object">
+      <Link
+        to="/"
+        className="flex absolute top-[-20%] left-[150%] text-6xl text-gray-500 hover:text-gray-600"
+      >
+        <i className="fa fa-close"></i>
+      </Link>
       <form id="add-obj-form">
         <input
           id="get-question"

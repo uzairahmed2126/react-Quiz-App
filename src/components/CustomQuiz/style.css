@@ -2,7 +2,7 @@
 @layer components {
     #add-obj {
         position: absolute;
-        top: 40%;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         background: #2c5364;
