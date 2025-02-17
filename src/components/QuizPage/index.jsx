@@ -2,17 +2,13 @@ import React, { useEffect, useState } from "react";
 import useQuizData from "../../hooks/useQuizData";
 import "../QuizPage/style.css";
 import { Link } from "react-router";
+import CloseBtn from "../CloseBtn/index";
 function Score({ score }) {
   let color = "";
   score <= 30 ? (color = "text-red-500") : (color = "text-green-500");
   return (
     <div>
-      <Link
-        to="/"
-        className="flex absolute top-[10%] left-[80%] text-6xl text-gray-500 hover:text-gray-600"
-      >
-        <i className="fa fa-close"></i>
-      </Link>
+      <CloseBtn top={"10%"} left={"80%"} fontSize={"text-6xl"} />
       <h1
         className={`text-center m-60 text-8xl place-content-center items-center ${color}`}
       >
@@ -50,6 +46,7 @@ function QuizPage() {
   return (
     <React.Fragment>
       <div className="quiz-container">
+        <CloseBtn customClass="quiz-page-close-btn"/>
         <div
           id="question-container"
           onClick={handleQuestionOpt}
