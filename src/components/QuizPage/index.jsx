@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import useQuizData from "../../hooks/useQuizData";
 import "../QuizPage/style.css";
-import { Link } from "react-router";
 import CloseBtn from "../CloseBtn/index";
 function Score({ score }) {
   let color = "";
   score <= 30 ? (color = "text-red-500") : (color = "text-green-500");
   return (
     <div>
-      <CloseBtn top={"10%"} left={"80%"} fontSize={"text-6xl"} />
+      <CloseBtn customClass="quiz-page-close-btn" />
       <h1
         className={`text-center m-60 text-8xl place-content-center items-center ${color}`}
       >
@@ -18,15 +17,15 @@ function Score({ score }) {
   );
 }
 function QuizPage() {
-  let questionsLimit = 10;
   const [index, setIndex] = useState(0);
-  const { quizData, error } = useQuizData(questionsLimit);
+  const { quizData, length, error } = useQuizData();
   const [count, setCount] = useState(1);
   const [score, setScore] = useState(0);
   if (error) return <p>Error: {error}</p>;
   if (quizData.length === 0)
     return <p className="text-center m-20 text-6xl">Loading...</p>;
   let arr = ["a", "b", "c", "d"];
+
   function handleQuestionOpt(event) {
     let previousElement = event.target.previousElementSibling;
     let selectedAnswer = previousElement.innerText
@@ -40,13 +39,13 @@ function QuizPage() {
     setIndex((prevIndex) => prevIndex + 1);
     setCount((prevCount) => prevCount + 1);
   }
-  if (count > questionsLimit) {
+  if (count > length) {
     return <Score score={score} />;
   }
   return (
     <React.Fragment>
       <div className="quiz-container">
-        <CloseBtn customClass="quiz-page-close-btn"/>
+        <CloseBtn customClass="quiz-page-close-btn" />
         <div
           id="question-container"
           onClick={handleQuestionOpt}
@@ -54,7 +53,7 @@ function QuizPage() {
         >
           <div id="question-number">
             <h4>
-              {count}/{quizData.length}
+              {count}/{length}
             </h4>
           </div>
           <p className="question">{quizData[index].question}</p>

@@ -70,7 +70,7 @@
     background: rgba(17, 0, 0, 0.89);
   }
   .question-p {
-    width: 600px;
+    width: 700px;
     height: 80px;
     display: flex;
     border-radius: 20px;
@@ -80,17 +80,18 @@
     padding: 8px;
     outline: 1px solid white;
     font-size: 18px;
-    resize: horizontal;
-    overflow: auto;
     &:hover {
       cursor: pointer;
       outline: 2px solid rgb(177, 169, 169);
     }
   }
+
+
   .quiz-page-close-btn {
+    position: absolute;
+    font-size: 60px;
     top: 10%;
-    left: 90%;
-    @apply text-6xl;
+    left: 85%;
   }
 }
 @media screen and (max-width: 480px) {

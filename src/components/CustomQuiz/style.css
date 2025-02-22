@@ -53,4 +53,10 @@
       #add-obj-form input[type="submit"]:hover {
         background: #0056b3;
       }
+      .custom-quiz-page-close-btn {
+        position: absolute;
+        font-size: 60px;
+        top: -20%;
+        left:180%;
+      }
 }

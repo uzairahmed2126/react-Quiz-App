@@ -1,25 +1,73 @@
 import "../CustomQuiz/style.css";
-import { Link } from "react-router";
+import CloseBtn from "../CloseBtn/index";
+import useQuizData from "../../hooks/useQuizData";
+import QuizPage from "../QuizPage";
+import { useState } from "react";
 function CustomQuiz() {
+  const [index, setIndex] = useState(0);
+  const { quizData, error } = useQuizData();
+  let ar = ["a", "b", "c", "d"];
+  const question = document.getElementById("get-question");
+  const optA = document.getElementById("opt-a");
+  const optB = document.getElementById("opt-b");
+  const optC = document.getElementById("opt-c");
+  const optD = document.getElementById("opt-d");
+  const correctOpt = document.getElementById("correct-opt");
+  let questionsLimit = quizData.length;
+  function handleSubmit(e) {
+    e.preventDefault();
+    let newQuestion = {
+      question: question.value,
+      answers: {
+        answer_a: optA.value,
+        answer_b: optB.value,
+        answer_c: optC.value,
+        answer_d: optD.value,
+      },
+      correct_answers: {
+        answer_a_correct:
+          correctOpt.value.toLowerCase() === "a" ? "true" : "false",
+        answer_b_correct:
+          correctOpt.value.toLowerCase() === "b" ? "true" : "false",
+        answer_c_correct:
+          correctOpt.value.toLowerCase() === "c" ? "true" : "false",
+        answer_d_correct:
+          correctOpt.value.toLowerCase() === "d" ? "true" : "false",
+      },
+    };
+    questionsLimit++;
+    question.value = "";
+    optA.value = "";
+    optB.value = "";
+    optC.value = "";
+    optD.value = "";
+    correctOpt.value = "";
+    // local storage
+    quizData.unshift(newQuestion);
+    quizData.length++;
+    localStorage.setItem("mydata", JSON.stringify(quizData));
+  }
   return (
     <div id="add-obj" className="object">
-      <Link
-        to="/"
-        className="flex absolute top-[-20%] left-[150%] text-6xl text-gray-500 hover:text-gray-600"
-      >
-        <i className="fa fa-close"></i>
-      </Link>
-      <form id="add-obj-form">
+      <CloseBtn customClass="custom-quiz-page-close-btn" />
+      <form id="add-obj-form" onSubmit={handleSubmit}>
         <input
           id="get-question"
           type="text"
           placeholder="Enter Question"
           required
         />
-        <input id="opt-a" type="text" placeholder="Enter Option A" required />
-        <input id="opt-b" type="text" placeholder="Enter Option B" required />
-        <input id="opt-c" type="text" placeholder="Enter Option C" required />
-        <input id="opt-d" type="text" placeholder="Enter Option D" required />
+        {ar.map((opt, ind) => {
+          return (
+            <input
+              key={opt}
+              id={`opt-${opt}`}
+              type="text"
+              placeholder={`Enter Option ${opt.toUpperCase()}`}
+              required
+            />
+          );
+        })}
         <input
           id="correct-opt"
           type="text"
