@@ -86,12 +86,14 @@
     }
   }
 
-
   .quiz-page-close-btn {
     position: absolute;
     font-size: 60px;
     top: 10%;
     left: 85%;
+  }
+  #timer {
+    font-size: 30px;
   }
 }
 @media screen and (max-width: 480px) {

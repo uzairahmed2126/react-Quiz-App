@@ -1,62 +1,119 @@
 @import "tailwindcss";
 @layer components {
-    #add-obj {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: #2c5364;
-        width: 100%;
-        width: 100%;
-        max-width: 400px;
-        margin: 20px auto;
-        padding: 20px;
-        background: #f8f9fa;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        /* visibility: hidden; */
-      }
-      
-      #add-obj-form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-      
-      #add-obj-form input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-        pointer-events: auto;
-      }
-      
-      #add-obj-form input[type="text"]:focus {
-        border-color: #007bff;
-        outline: none;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-      }
-      
-      #add-obj-form input[type="submit"] {
-        pointer-events: auto;
-        background: #007bff;
-        color: white;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background 0.3s;
-      }
-      
-      #add-obj-form input[type="submit"]:hover {
-        background: #0056b3;
-      }
-      .custom-quiz-page-close-btn {
-        position: absolute;
-        font-size: 60px;
-        top: -20%;
-        left:180%;
-      }
+  #add-obj {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #2c5364;
+    width: 100%;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* visibility: hidden; */
+  }
+
+  #add-obj-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #add-obj-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    pointer-events: auto;
+  }
+
+  #add-obj-form input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+
+  #add-obj-form input[type="submit"] {
+    pointer-events: auto;
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  #add-obj-form input[type="submit"]:hover {
+    background: #0056b3;
+  }
+  .custom-quiz-page-close-btn {
+    position: absolute;
+    font-size: 60px;
+    top: -20%;
+    left: 180%;
+  }
+  .custom-quiz-page-close-btn::after {
+    content: "Click to go back"; /* Your tooltip text */
+    position: absolute;
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    bottom: 100%; /* Position above */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out;
+  }
+  .custom-quiz-page-close-btn:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
 }
+@media screen and (max-width: 480px) {
+  @layer components {
+    .custom-quiz-page-close-btn {
+      left: 91%;
+      top: -25%;
+      @apply text-4xl;
+    }
+    .custom-quiz-page-close-btn::after {
+      content: "Click to go back"; /* Your tooltip text */
+      position: absolute;
+      background-color: #007bff;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      white-space: nowrap;
+      bottom: 100%; /* Position above */
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease-in-out;
+    }
+    .custom-quiz-page-close-btn:hover::after {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+/* @media screen and ((min-width: 480px) and (max-width: 720px)) {
+  @layer components {
+    .quiz-page-close-btn {
+      top: 10%;
+      left: 80%;
+    }
+  }
+} */

@@ -1,19 +1,18 @@
 import "../CustomQuiz/style.css";
 import CloseBtn from "../CloseBtn/index";
 import useQuizData from "../../hooks/useQuizData";
-import QuizPage from "../QuizPage";
 import { useState } from "react";
 function CustomQuiz() {
-  const [index, setIndex] = useState(0);
   const { quizData, error } = useQuizData();
+  const [questionsLimit, setQuestionLimit] = useState(5);
   let ar = ["a", "b", "c", "d"];
+
   const question = document.getElementById("get-question");
   const optA = document.getElementById("opt-a");
   const optB = document.getElementById("opt-b");
   const optC = document.getElementById("opt-c");
   const optD = document.getElementById("opt-d");
   const correctOpt = document.getElementById("correct-opt");
-  let questionsLimit = quizData.length;
   function handleSubmit(e) {
     e.preventDefault();
     let newQuestion = {
@@ -35,18 +34,18 @@ function CustomQuiz() {
           correctOpt.value.toLowerCase() === "d" ? "true" : "false",
       },
     };
-    questionsLimit++;
+    // setQuestionLimit((previouLimit) => previouLimit);
     question.value = "";
     optA.value = "";
     optB.value = "";
     optC.value = "";
     optD.value = "";
     correctOpt.value = "";
-    // local storage
     quizData.unshift(newQuestion);
-    quizData.length++;
-    localStorage.setItem("mydata", JSON.stringify(quizData));
+    // session storage
+    sessionStorage.setItem("mydata", JSON.stringify(quizData));
   }
+
   return (
     <div id="add-obj" className="object">
       <CloseBtn customClass="custom-quiz-page-close-btn" />

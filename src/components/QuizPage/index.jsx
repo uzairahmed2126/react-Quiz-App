@@ -21,6 +21,8 @@ function QuizPage() {
   const { quizData, length, error } = useQuizData();
   const [count, setCount] = useState(1);
   const [score, setScore] = useState(0);
+  const [second, setSecond] = useState(30);
+  const [minute, setMinute] = useState(1);
   if (error) return <p>Error: {error}</p>;
   if (quizData.length === 0)
     return <p className="text-center m-20 text-6xl">Loading...</p>;
@@ -39,12 +41,27 @@ function QuizPage() {
     setIndex((prevIndex) => prevIndex + 1);
     setCount((prevCount) => prevCount + 1);
   }
+  console.log(length);
   if (count > length) {
+    return <Score score={score} />;
+  }
+  const handleTimer = setTimeout(() => {
+    setSecond(second - 1);
+    if (second === 0) {
+      setMinute(0);
+      setSecond(60);
+    }
+  }, 1000);
+  if (second === 0 && minute === 0) {
+    clearTimeout(handleTimer());
     return <Score score={score} />;
   }
   return (
     <React.Fragment>
       <div className="quiz-container">
+        <div id="timer">
+          {minute}:{second}
+        </div>
         <CloseBtn customClass="quiz-page-close-btn" />
         <div
           id="question-container"
