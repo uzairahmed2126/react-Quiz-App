@@ -48,13 +48,10 @@
   .inner-question-container {
     display: flex;
     align-items: center;
-    /* text-align: justify; */
-    /* justify-content: center; */
     color: white;
     gap: 15px;
     font-size: 15px;
     padding: 10px;
-    /* pointer-events: none; */
   }
 
   .option {
@@ -99,8 +96,87 @@
 @media screen and (max-width: 480px) {
   @layer components {
     .quiz-page-close-btn {
-      left: 75%;
-      @apply text-4xl;
+      left: 85%;
+      top: 3.9%;
+      @apply text-3xl;
+    }
+    .quiz-container {
+      background-color: lightblue;
+      margin: 15px;
+      padding: 10px;
+    }
+    #question-container {
+      display: flex;
+      text-align: center;
+      align-items: center;
+      place-content: center;
+      flex-direction: column;
+    }
+    #questions {
+      width: 100%;
+      max-width: 500px;
+      @apply flex flex-col justify-center text-green-100;
+    }
+    .question {
+      font-size: 15px;
+      padding: 10px;
+      height: 80px;
+      color: var(--global-text-color);
+      text-align: center;
+    }
+    #question-number {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #question-number > p {
+      font-size: 20px;
+    }
+    #question-number > h4 {
+      font-size: 20px;
+      border-radius: 50%;
+      background: rgba(0, 255, 255, 0.384);
+      height: 50px;
+      width: 50px;
+      place-content: center;
+      box-shadow: var(--shadow);
+    }
+
+    .inner-question-container {
+      display: flex;
+      align-items: center;
+      color: white;
+      gap: 15px;
+      font-size: 15px;
+      padding: 10px;
+    }
+
+    .option {
+      height: fit-content;
+      width: 80px;
+      padding: 10px;
+      font-size: 15px;
+      box-shadow: var(--shadow);
+      background: rgba(17, 0, 0, 0.89);
+    }
+    .question-p {
+      width: 1250px;
+      height: 100px;
+      display: flex;
+      border-radius: 20px;
+      text-align: start;
+      word-spacing: 2px;
+      background: rgb(37, 24, 24);
+      padding: 8px;
+      outline: 1px solid white;
+      font-size: 15px;
+      &:hover {
+        cursor: pointer;
+        outline: 2px solid rgb(177, 169, 169);
+      }
+    }
+    #timer {
+      font-size: 25px;
     }
   }
 }

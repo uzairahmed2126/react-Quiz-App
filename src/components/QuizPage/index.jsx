@@ -1,21 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import useQuizData from "../../hooks/useQuizData";
 import "../QuizPage/style.css";
 import CloseBtn from "../CloseBtn/index";
-function Score({ score }) {
-  let color = "";
-  score <= 30 ? (color = "text-red-500") : (color = "text-green-500");
-  return (
-    <div>
-      <CloseBtn customClass="quiz-page-close-btn" />
-      <h1
-        className={`text-center m-60 text-8xl place-content-center items-center ${color}`}
-      >
-        Score :{score}
-      </h1>
-    </div>
-  );
-}
+import Score from "../Score";
 function QuizPage() {
   const [index, setIndex] = useState(0);
   const { quizData, length, error } = useQuizData();
@@ -45,22 +32,24 @@ function QuizPage() {
   if (count > length) {
     return <Score score={score} />;
   }
+
   const handleTimer = setTimeout(() => {
     setSecond(second - 1);
     if (second === 0) {
-      setMinute(0);
-      setSecond(60);
+      setMinute(minute - 1);
+      setSecond(59);
     }
   }, 1000);
   if (second === 0 && minute === 0) {
-    clearTimeout(handleTimer());
+    clearTimeout(handleTimer);
     return <Score score={score} />;
   }
+
   return (
     <React.Fragment>
       <div className="quiz-container">
         <div id="timer">
-          {minute}:{second}
+          {minute}:{second < 10 ? "0" + second : second}
         </div>
         <CloseBtn customClass="quiz-page-close-btn" />
         <div

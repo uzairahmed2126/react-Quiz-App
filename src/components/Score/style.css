@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@media screen and (max-width: 480px) {
+  #score_container {
+    display: flex;
+    justify-content: center;
+  }
+  #score_h1 {
+    @apply flex text-5xl p-10;
+  }
+}

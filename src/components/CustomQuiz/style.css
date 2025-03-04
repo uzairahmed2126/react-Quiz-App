@@ -7,14 +7,12 @@
     transform: translate(-50%, -50%);
     background: #2c5364;
     width: 100%;
-    width: 100%;
     max-width: 400px;
     margin: 20px auto;
     padding: 20px;
     background: #f8f9fa;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* visibility: hidden; */
   }
 
   #add-obj-form {
@@ -82,6 +80,9 @@
 }
 @media screen and (max-width: 480px) {
   @layer components {
+    #add-obj {
+      max-width: 300px;
+    }
     .custom-quiz-page-close-btn {
       left: 91%;
       top: -25%;
